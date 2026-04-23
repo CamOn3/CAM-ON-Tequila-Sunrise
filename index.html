@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CAM ON</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -15,9 +15,10 @@ body {
   background: linear-gradient(180deg,#ffb07a,#ff2f87);
   display: flex;
   justify-content: center;
+  color: white;
 }
-* { color: white; }
 
+/* APP */
 .app {
   width: 100%;
   max-width: 430px;
@@ -27,6 +28,7 @@ body {
   justify-content: space-between;
 }
 
+/* TIMER */
 .top {
   display: flex;
   justify-content: center;
@@ -35,8 +37,8 @@ body {
 
 .timer-box {
   background: #ff2f87;
-  padding: 10px 30px;
-  border-radius: 30px;
+  padding: 10px 35px;
+  border-radius: 40px;
   position: relative;
 }
 
@@ -46,15 +48,16 @@ body {
   background: lime;
   border-radius: 50%;
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 8px;
 }
 
 .timer {
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-weight: 600;
+  letter-spacing: 3px;
 }
 
+/* MAIN CARD */
 .card {
   background: #ff2f87;
   margin: 0 20px;
@@ -63,36 +66,50 @@ body {
   text-align: center;
 }
 
-.date { letter-spacing: 8px; font-size: 18px; }
+.date {
+  letter-spacing: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
 
+/* 🔥 CAM ON FONT FIX */
 .title {
-  font-family: 'Anton';
-  font-size: 110px;
+  font-family: 'Anton', sans-serif;
+  font-size: 120px;
   line-height: 0.9;
+  letter-spacing: 2px;
 }
 
-.sub { letter-spacing: 6px; margin-top: 10px; }
+/* SUB TEXT */
+.sub {
+  letter-spacing: 6px;
+  font-size: 14px;
+  margin-top: 10px;
+}
 
+/* BRAND */
 .brand {
-  margin-top: 25px;
+  margin-top: 30px;
   font-family: 'Anton';
+  font-size: 40px;
   transform: skewX(-10deg);
-  font-size: 35px;
 }
 
+/* CAMERA BUTTON */
 .bottom {
   margin-bottom: 20px;
   text-align: center;
 }
 
 .capture {
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  height: 85px;
   background: white;
   border-radius: 50%;
   margin: auto;
 }
 
+/* SWITCH */
 .switch {
   margin-top: 20px;
   display: flex;
@@ -100,7 +117,7 @@ body {
 }
 
 .switch-box {
-  background: #ddd;
+  background: rgba(255,255,255,0.3);
   border-radius: 30px;
   padding: 5px;
   display: flex;
@@ -108,106 +125,114 @@ body {
 }
 
 .switch span {
-  padding: 8px 15px;
-  color: black;
+  padding: 8px 20px;
 }
 
 .active {
   background: white;
+  color: black;
   border-radius: 20px;
-  color: #ff2f87 !important;
 }
 
-/* DATENSCHUTZ */
-#consentBox {
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:999;
+/* DSGVO POPUP */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.consentInner {
-background:white;
-color:black;
-padding:20px;
-border-radius:20px;
-max-width:300px;
-text-align:center;
+.popup {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+  text-align: center;
 }
 </style>
 </head>
 
 <body>
 
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <p>Ich stimme zu, dass mein Foto verwendet werden darf.</p>
+    <button onclick="accept()">Zustimmen</button>
+  </div>
+</div>
+
 <div class="app">
 
-<div class="top">
-<div class="timer-box">
-<div class="dot"></div>
-<div class="timer" id="timer">00:00:00</div>
-</div>
+  <div class="top">
+    <div class="timer-box">
+      <div class="dot"></div>
+      <div class="timer" id="timer">00:00:00</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="date">MAY 8TH</div>
+    <div class="title">CAM ON</div>
+    <div class="sub">TEQUILA SUNRISE</div>
+    <div class="sub">INTERNATIONAL MUSIC VIBES</div>
+    <div class="brand">APARTMENT</div>
+  </div>
+
+  <div class="bottom">
+    <div class="capture" onclick="openCam()"></div>
+
+    <div class="switch">
+      <div class="switch-box">
+        <span>VIDEO</span>
+        <span class="active">FOTO</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div class="card">
-<div class="date">MAY 8TH</div>
-<div class="title">CAM ON</div>
-<div class="sub">TEQUILA SUNRISE</div>
-<div class="sub">INTERNATIONAL MUSIC VIBES</div>
-<div class="brand">APARTMENT</div>
-</div>
-
-<div class="bottom">
-<div class="capture"></div>
-
-<div class="switch">
-<div class="switch-box">
-<span>VIDEO</span>
-<span class="active">FOTO</span>
-</div>
-</div>
-</div>
-
-</div>
-
-<!-- DATENSCHUTZ -->
-<div id="consentBox">
-<div class="consentInner">
-<h3>Datenschutz</h3>
-<p>Ich stimme zu, dass mein Foto aufgenommen und verwendet werden darf.</p>
-
-<label>
-<input type="checkbox" id="agree"> Ich stimme zu
-</label>
-
-<br><br>
-
-<button onclick="acceptConsent()">Weiter</button>
-</div>
-</div>
+<script src="https://upload-widget.cloudinary.com/global/all.js"></script>
 
 <script>
-let s = 0;
+let consent = false;
 
+function accept(){
+  consent = true;
+  document.getElementById("overlay").style.display="none";
+}
+
+/* TIMER */
+let s = 0;
 setInterval(()=>{
-s++;
-let h = String(Math.floor(s/3600)).padStart(2,'0');
-let m = String(Math.floor((s%3600)/60)).padStart(2,'0');
-let sec = String(s%60).padStart(2,'0');
-document.getElementById("timer").innerText = `${h}:${m}:${sec}`;
+  s++;
+  let h = String(Math.floor(s/3600)).padStart(2,'0');
+  let m = String(Math.floor((s%3600)/60)).padStart(2,'0');
+  let sec = String(s%60).padStart(2,'0');
+  document.getElementById("timer").innerText = `${h}:${m}:${sec}`;
 },1000);
 
-function acceptConsent(){
-if(!document.getElementById("agree").checked){
-alert("Bitte zustimmen!");
-return;
-}
-document.getElementById("consentBox").style.display = "none";
+/* CAMERA */
+function openCam(){
+  if(!consent){
+    alert("Bitte erst zustimmen!");
+    return;
+  }
+
+  const widget = cloudinary.createUploadWidget({
+    cloudName: "deinCloudName",
+    uploadPreset: "deinPreset",
+    sources: ["camera"],
+    multiple: false
+  }, (error, result) => {
+    if(result.event === "success"){
+      alert("Foto erfolgreich!");
+    }
+  });
+
+  widget.open();
 }
 </script>
 
