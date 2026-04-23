@@ -1,558 +1,215 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>CAM ON</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAM ON</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  background: linear-gradient(180deg,#ffb07a,#ff2f87);
+  display: flex;
+  justify-content: center;
+}
+* { color: white; }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      overflow-x: hidden;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(180deg, #f5b185 0%, #f89a90 40%, #ff6d9c 100%);
-    }
+.app {
+  width: 100%;
+  max-width: 430px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    body {
-      display: flex;
-      justify-content: center;
-    }
+.top {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-    .app {
-      position: relative;
-      width: 100%;
-      max-width: 430px;
-      min-height: 100dvh;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 18% 12%, rgba(255,255,255,0.18), transparent 18%),
-        radial-gradient(circle at 82% 16%, rgba(255,255,255,0.12), transparent 18%),
-        radial-gradient(circle at 18% 84%, rgba(255,255,255,0.08), transparent 16%),
-        linear-gradient(180deg, #f5b185 0%, #f89a90 40%, #ff6d9c 100%);
-    }
+.timer-box {
+  background: #ff2f87;
+  padding: 10px 30px;
+  border-radius: 30px;
+  position: relative;
+}
 
-    .texture {
-      position: absolute;
-      inset: 0;
-      opacity: 0.06;
-      pointer-events: none;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);
-      background-size: 8px 8px;
-      mix-blend-mode: soft-light;
-    }
+.dot {
+  width: 10px;
+  height: 10px;
+  background: lime;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
 
-    .top {
-      position: relative;
-      z-index: 3;
-      padding-top: 22px;
-      display: flex;
-      justify-content: center;
-    }
+.timer {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-    .timer-pill {
-      position: relative;
-      min-width: 168px;
-      text-align: center;
-      background: #ff1d86;
-      color: white;
-      padding: 16px 26px;
-      border-radius: 999px;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      font-variant-numeric: tabular-nums;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-    }
+.card {
+  background: #ff2f87;
+  margin: 0 20px;
+  border-radius: 30px;
+  padding: 40px 20px;
+  text-align: center;
+}
 
-    .green-dot {
-      position: absolute;
-      right: 18px;
-      top: 14px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #b9ff18;
-      box-shadow: 0 0 10px rgba(185,255,24,0.8);
-    }
+.date { letter-spacing: 8px; font-size: 18px; }
 
-    .tool-pill {
-      position: absolute;
-      top: 155px;
-      right: 16px;
-      z-index: 3;
-      background: #ececec;
-      color: #111;
-      border-radius: 999px;
-      padding: 14px 18px;
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      font-size: 30px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-    }
+.title {
+  font-family: 'Anton';
+  font-size: 110px;
+  line-height: 0.9;
+}
 
-    .pink-card {
-      position: relative;
-      z-index: 2;
-      margin-top: 185px;
-      background: #ff1d86;
-      padding: 92px 26px 110px;
-      text-align: center;
-    }
+.sub { letter-spacing: 6px; margin-top: 10px; }
 
-    .date {
-      color: #fff;
-      font-size: 22px;
-      letter-spacing: 10px;
-      font-weight: 300;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
+.brand {
+  margin-top: 25px;
+  font-family: 'Anton';
+  transform: skewX(-10deg);
+  font-size: 35px;
+}
 
-    .title {
-      margin: 0;
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(112px, 27vw, 175px);
-      line-height: 0.9;
-      color: #f5f5f5;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+.bottom {
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-    .tequila {
-      margin-top: 28px;
-      font-size: 33px;
-      letter-spacing: 8px;
-      font-weight: 300;
-      text-transform: uppercase;
-      color: #fff;
-    }
+.capture {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  margin: auto;
+}
 
-    .subtitle {
-      margin-top: 48px;
-      font-size: 17px;
-      letter-spacing: 8px;
-      font-style: italic;
-      font-weight: 300;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.92);
-      white-space: nowrap;
-    }
+.switch {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
 
-    .brand {
-      margin-top: 60px;
-      font-family: 'Anton', sans-serif;
-      font-size: 58px;
-      line-height: 1;
-      color: #fff;
-      transform: skewX(-14deg);
-      text-transform: uppercase;
-    }
+.switch-box {
+  background: #ddd;
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  gap: 20px;
+}
 
-    .camera-area {
-      position: relative;
-      z-index: 3;
-      margin-top: -32px;
-      padding: 0 24px 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.switch span {
+  padding: 8px 15px;
+  color: black;
+}
 
-    .capture-button {
-      width: 122px;
-      height: 122px;
-      border-radius: 50%;
-      border: 10px solid rgba(255,255,255,0.3);
-      background: #f2f2f2;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-      cursor: pointer;
-    }
+.active {
+  background: white;
+  border-radius: 20px;
+  color: #ff2f87 !important;
+}
 
-    .controls-row {
-      width: 100%;
-      margin-top: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
+/* DATENSCHUTZ */
+#consentBox {
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
 
-    .mini-logo {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      background: #ff1d86;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 6px;
-      flex-shrink: 0;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-    }
-
-    .mini-logo .a { font-size: 9px; line-height: 1.1; letter-spacing: 1px; }
-    .mini-logo .b { font-family: 'Anton', sans-serif; font-size: 20px; line-height: 1; margin: 2px 0; }
-    .mini-logo .c { font-size: 6px; line-height: 1.1; letter-spacing: 0.7px; }
-
-    .mode-switch {
-      flex: 1;
-      max-width: 320px;
-      background: #dbdbdb;
-      border-radius: 999px;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
-    }
-
-    .mode {
-      flex: 1;
-      text-align: center;
-      padding: 18px 0;
-      border-radius: 999px;
-      font-size: 24px;
-      font-weight: 700;
-      color: #111;
-      text-transform: uppercase;
-    }
-
-    .mode.active {
-      background: #ececec;
-      color: #d1149d;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    }
-
-    .rotate-btn {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      border: none;
-      background: #ececec;
-      color: #111;
-      font-size: 40px;
-      cursor: pointer;
-      flex-shrink: 0;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-    }
-
-    .status {
-      margin-top: 14px;
-      min-height: 22px;
-      text-align: center;
-      font-size: 15px;
-      color: white;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.12);
-    }
-
-    .asset {
-      position: absolute;
-      z-index: 4;
-      pointer-events: none;
-      user-select: none;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
-    }
-
-    .asset.flower { font-size: 108px; }
-    .asset.flower.f1 { top: 74px; left: -2px; transform: rotate(-8deg); }
-    .asset.flower.f2 { top: 165px; left: -12px; font-size: 128px; transform: rotate(10deg); }
-    .asset.flower.f3 { top: 196px; right: -8px; font-size: 84px; transform: rotate(14deg); }
-    .asset.flower.f4 { bottom: 252px; right: 26px; font-size: 88px; transform: rotate(-8deg); }
-    .asset.flower.f5 { bottom: 225px; right: -8px; font-size: 108px; transform: rotate(8deg); }
-    .asset.flower.f6 { bottom: 290px; left: 10px; font-size: 92px; transform: rotate(-14deg); }
-
-    .asset.drink {
-      right: 28px;
-      bottom: 246px;
-      font-size: 142px;
-    }
-
-    .asset.citrus {
-      left: -8px;
-      bottom: 255px;
-      font-size: 92px;
-      transform: rotate(-12deg);
-    }
-
-    .asset.star {
-      left: 64px;
-      bottom: 290px;
-      font-size: 72px;
-      transform: rotate(10deg);
-    }
-
-    .consent-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.68);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
-      z-index: 20;
-    }
-
-    .consent-box {
-      width: 100%;
-      max-width: 360px;
-      background: white;
-      color: #111;
-      border-radius: 28px;
-      padding: 24px 22px 22px;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.28);
-    }
-
-    .consent-box h3 {
-      margin: 0 0 12px;
-      font-size: 22px;
-    }
-
-    .consent-box p {
-      margin: 0 0 18px;
-      font-size: 15px;
-      line-height: 1.45;
-    }
-
-    .consent-check {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 18px;
-      font-size: 15px;
-      line-height: 1.4;
-    }
-
-    .consent-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 16px;
-      padding: 14px 18px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: #ff1d86;
-      color: white;
-    }
-
-    .btn-secondary {
-      background: #efefef;
-      color: #111;
-    }
-
-    .hidden-input {
-      display: none;
-    }
-
-    @media (max-width: 390px) {
-      .tool-pill { transform: scale(0.88); transform-origin: top right; }
-      .date { font-size: 18px; letter-spacing: 7px; }
-      .tequila { font-size: 28px; letter-spacing: 6px; }
-      .subtitle { font-size: 14px; letter-spacing: 5px; }
-      .brand { font-size: 48px; }
-    }
-  </style>
+.consentInner {
+background:white;
+color:black;
+padding:20px;
+border-radius:20px;
+max-width:300px;
+text-align:center;
+}
+</style>
 </head>
+
 <body>
-  <div class="app">
-    <div class="texture"></div>
 
-    <div class="asset flower f1">🌺</div>
-    <div class="asset flower f2">🌺</div>
-    <div class="asset flower f3">🌺</div>
-    <div class="asset flower f4">🌺</div>
-    <div class="asset flower f5">🌺</div>
-    <div class="asset flower f6">🌺</div>
-    <div class="asset drink">🍹</div>
-    <div class="asset citrus">🍊</div>
-    <div class="asset star">⭐</div>
+<div class="app">
 
-    <div class="top">
-      <div class="timer-pill" id="timer">
-        00:00:00
-        <span class="green-dot"></span>
-      </div>
-    </div>
+<div class="top">
+<div class="timer-box">
+<div class="dot"></div>
+<div class="timer" id="timer">00:00:00</div>
+</div>
+</div>
 
-    <div class="tool-pill">
-      <span>🔇</span>
-      <span style="color:#cf0eb1;">◎</span>
-      <span>⠿</span>
-    </div>
+<div class="card">
+<div class="date">MAY 8TH</div>
+<div class="title">CAM ON</div>
+<div class="sub">TEQUILA SUNRISE</div>
+<div class="sub">INTERNATIONAL MUSIC VIBES</div>
+<div class="brand">APARTMENT</div>
+</div>
 
-    <div class="pink-card">
-      <div class="date">MAY 8TH</div>
-      <h1 class="title">CAM ON</h1>
-      <div class="tequila">TEQUILA SUNRISE</div>
-      <div class="subtitle">INTERNATIONAL MUSIC VIBES</div>
-      <div class="brand">APARTMENT</div>
-    </div>
+<div class="bottom">
+<div class="capture"></div>
 
-    <div class="camera-area">
-      <button class="capture-button" id="openCameraBtn" aria-label="Kamera öffnen"></button>
-      <div class="status" id="statusText"></div>
+<div class="switch">
+<div class="switch-box">
+<span>VIDEO</span>
+<span class="active">FOTO</span>
+</div>
+</div>
+</div>
 
-      <div class="controls-row">
-        <div class="mini-logo">
-          <div class="a">MAY 8TH</div>
-          <div class="b">CAM ON</div>
-          <div class="c">TEQUILA SUNRISE</div>
-          <div class="c">APARTMENT</div>
-        </div>
+</div>
 
-        <div class="mode-switch">
-          <div class="mode">VIDEO</div>
-          <div class="mode active">FOTO</div>
-        </div>
+<!-- DATENSCHUTZ -->
+<div id="consentBox">
+<div class="consentInner">
+<h3>Datenschutz</h3>
+<p>Ich stimme zu, dass mein Foto aufgenommen und verwendet werden darf.</p>
 
-        <button class="rotate-btn" id="rotateBtn" aria-label="Kamera wechseln">↻</button>
-      </div>
-    </div>
+<label>
+<input type="checkbox" id="agree"> Ich stimme zu
+</label>
 
-    <input
-      id="cameraInput"
-      class="hidden-input"
-      type="file"
-      accept="image/*"
-      capture="environment"
-    />
-  </div>
+<br><br>
 
-  <div class="consent-overlay" id="consentOverlay">
-    <div class="consent-box">
-      <h3>Datenschutz & Zustimmung</h3>
-      <p>
-        Mit der Nutzung stimmst du zu, dass dein Foto für dieses Event aufgenommen,
-        hochgeladen und für Instagram und andere Social-Media-Plattformen verwendet werden darf.
-      </p>
+<button onclick="acceptConsent()">Weiter</button>
+</div>
+</div>
 
-      <label class="consent-check">
-        <input type="checkbox" id="consentCheck">
-        <span>Ich stimme der Verarbeitung und Veröffentlichung meines Fotos zu.</span>
-      </label>
+<script>
+let s = 0;
 
-      <div class="consent-actions">
-        <button class="btn btn-primary" id="acceptBtn">Zustimmen und starten</button>
-        <button class="btn btn-secondary" id="declineBtn">Abbrechen</button>
-      </div>
-    </div>
-  </div>
+setInterval(()=>{
+s++;
+let h = String(Math.floor(s/3600)).padStart(2,'0');
+let m = String(Math.floor((s%3600)/60)).padStart(2,'0');
+let sec = String(s%60).padStart(2,'0');
+document.getElementById("timer").innerText = `${h}:${m}:${sec}`;
+},1000);
 
-  <script>
-    const CLOUD_NAME = "dhl8ywkmb";
-    const UPLOAD_PRESET = "camon_upload";
+function acceptConsent(){
+if(!document.getElementById("agree").checked){
+alert("Bitte zustimmen!");
+return;
+}
+document.getElementById("consentBox").style.display = "none";
+}
+</script>
 
-    const timerEl = document.getElementById("timer");
-    const statusText = document.getElementById("statusText");
-    const openCameraBtn = document.getElementById("openCameraBtn");
-    const cameraInput = document.getElementById("cameraInput");
-    const rotateBtn = document.getElementById("rotateBtn");
-    const consentOverlay = document.getElementById("consentOverlay");
-    const consentCheck = document.getElementById("consentCheck");
-    const acceptBtn = document.getElementById("acceptBtn");
-    const declineBtn = document.getElementById("declineBtn");
-
-    let seconds = 0;
-    let timerStarted = false;
-    let currentCapture = "environment";
-
-    function formatTime(totalSeconds) {
-      const hh = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
-      const mm = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
-      const ss = String(totalSeconds % 60).padStart(2, "0");
-      return `${hh}:${mm}:${ss}`;
-    }
-
-    function startTimer() {
-      if (timerStarted) return;
-      timerStarted = true;
-      setInterval(() => {
-        seconds++;
-        timerEl.childNodes[0].nodeValue = formatTime(seconds);
-      }, 1000);
-    }
-
-    acceptBtn.addEventListener("click", () => {
-      if (!consentCheck.checked) {
-        alert("Bitte erst zustimmen.");
-        return;
-      }
-      consentOverlay.style.display = "none";
-      startTimer();
-      statusText.textContent = "Bereit für dein Foto.";
-    });
-
-    declineBtn.addEventListener("click", () => {
-      statusText.textContent = "Zustimmung erforderlich.";
-    });
-
-    rotateBtn.addEventListener("click", () => {
-      currentCapture = currentCapture === "environment" ? "user" : "environment";
-      cameraInput.setAttribute("capture", currentCapture);
-      statusText.textContent = currentCapture === "environment"
-        ? "Rückkamera ausgewählt."
-        : "Frontkamera ausgewählt.";
-    });
-
-    openCameraBtn.addEventListener("click", () => {
-      if (consentOverlay.style.display !== "none") {
-        statusText.textContent = "Bitte zuerst zustimmen.";
-        return;
-      }
-      cameraInput.click();
-    });
-
-    cameraInput.addEventListener("change", async (event) => {
-      const file = event.target.files[0];
-
-      if (!file) {
-        statusText.textContent = "Kein Bild ausgewählt.";
-        return;
-      }
-
-      statusText.textContent = "Foto wird hochgeladen...";
-
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", UPLOAD_PRESET);
-      formData.append("folder", "camon_party");
-
-      try {
-        const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-          method: "POST",
-          body: formData
-        });
-
-        if (!response.ok) throw new Error("Upload failed");
-
-        statusText.textContent = "Foto erfolgreich hochgeladen.";
-        cameraInput.value = "";
-      } catch (error) {
-        statusText.textContent = "Upload fehlgeschlagen.";
-      }
-    });
-  </script>
 </body>
 </html>
