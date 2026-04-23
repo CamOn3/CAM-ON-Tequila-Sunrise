@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -19,105 +19,161 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Montserrat', Arial, sans-serif;
+      min-height: 100%;
+      font-family: 'Montserrat', sans-serif;
       color: #fff;
-      background: #000;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.14), transparent 18%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 16%),
+        linear-gradient(180deg, #f6b282 0%, #f79a93 45%, #ff79a8 100%);
+      overflow-y: auto;
     }
 
     body {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
     .app {
-      position: relative;
       width: 100%;
       max-width: 430px;
-      height: 100dvh;
-      background: linear-gradient(180deg,#ffb07a,#ff2f87);
+      min-height: 100vh;
+      padding: 22px 18px 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px 18px 28px;
-      overflow: hidden;
+      gap: 28px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .top {
+    .top-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
-      margin-top: 6px;
+      gap: 22px;
     }
 
-    .dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #22f35d;
-      box-shadow: 0 0 14px rgba(34,243,93,0.9);
-    }
-
-    .timer {
-      background: #ff3a48;
+    .timer-pill {
+      position: relative;
+      min-width: 170px;
+      text-align: center;
+      background: #ff1f86;
       color: #fff;
-      padding: 10px 18px;
-      border-radius: 12px;
-      font-size: 18px;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-size: 22px;
       font-weight: 700;
       letter-spacing: 2px;
       font-variant-numeric: tabular-nums;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
     }
 
-    .hero {
+    .green-dot {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #c7ff1a;
+      box-shadow: 0 0 10px rgba(199,255,26,0.8);
+    }
+
+    .tool-pill {
+      align-self: flex-end;
+      background: #ececec;
+      color: #111;
+      border-radius: 999px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 30px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .card {
+      background: #ff1f86;
+      padding: 78px 22px 86px;
       text-align: center;
-      margin-top: 8px;
     }
 
     .date {
-      font-size: 18px;
-      letter-spacing: 7px;
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 10px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.96);
-      margin-bottom: 12px;
+      margin-bottom: 24px;
     }
 
     .title {
       margin: 0;
       font-family: 'Anton', sans-serif;
-      font-size: clamp(84px, 20vw, 132px);
+      font-size: clamp(100px, 23vw, 150px);
       line-height: 0.9;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      color: #f3f3f3;
+      color: #f2f2f2;
+      white-space: nowrap;
+    }
+
+    .tequila {
+      margin-top: 26px;
+      font-size: 30px;
+      font-weight: 300;
+      letter-spacing: 8px;
+      text-transform: uppercase;
       white-space: nowrap;
     }
 
     .subtitle {
-      margin-top: 16px;
-      font-size: 14px;
+      margin-top: 48px;
+      font-size: 16px;
+      font-weight: 300;
+      font-style: italic;
       letter-spacing: 8px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.95);
+      color: rgba(255,255,255,0.92);
       white-space: nowrap;
     }
 
     .brand {
-      margin-top: 54px;
+      margin-top: 58px;
       font-family: 'Anton', sans-serif;
-      font-size: 38px;
-      transform: skewX(-14deg);
-      color: #fff;
+      font-size: 56px;
+      line-height: 1;
+      transform: skewX(-12deg);
       text-transform: uppercase;
     }
 
+    .camera-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      margin-top: -10px;
+    }
+
+    .capture-btn {
+      width: 122px;
+      height: 122px;
+      border-radius: 50%;
+      border: 10px solid rgba(255,255,255,0.28);
+      background: #f2f2f2;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+
+    .status {
+      min-height: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.96);
+    }
+
     .consent-box {
-      margin: 34px auto 0;
       width: 100%;
-      max-width: 330px;
+      max-width: 340px;
       display: flex;
       align-items: flex-start;
       gap: 12px;
@@ -130,7 +186,7 @@
       width: 24px;
       height: 24px;
       min-width: 24px;
-      border: 2px solid rgba(255,255,255,0.92);
+      border: 2px solid rgba(255,255,255,0.95);
       border-radius: 6px;
       background: transparent;
       position: relative;
@@ -145,118 +201,120 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       font-size: 15px;
       font-weight: 700;
+      color: #fff;
     }
 
     .consent-box label {
-      font-size: 14px;
-      line-height: 1.45;
-      color: rgba(255,255,255,0.92);
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.96);
     }
 
-    .privacy-note {
-      margin: 16px auto 0;
-      max-width: 330px;
+    .privacy-link {
       font-size: 12px;
-      line-height: 1.45;
-      color: rgba(255,255,255,0.78);
-      text-align: left;
-    }
-
-    .privacy-note button {
+      color: rgba(255,255,255,0.95);
+      text-decoration: underline;
       background: none;
       border: none;
-      color: #fff;
-      text-decoration: underline;
       padding: 0;
-      font: inherit;
       cursor: pointer;
+      font-family: inherit;
     }
 
-    .bottom {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 26px;
-      margin-bottom: 4px;
-    }
-
-    .zoom {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      font-size: 18px;
-      color: rgba(255,255,255,0.92);
-    }
-
-    .zoom-active {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: rgba(36,36,36,0.96);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffd53d;
-      font-weight: 700;
-    }
-
-    .controls {
+    .bottom-row {
       width: 100%;
-      max-width: 360px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 14px;
+      margin-top: 8px;
     }
 
-    .side-btn {
-      width: 80px;
-      height: 80px;
+    .mini-badge {
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
-      border: none;
-      background: rgba(34,34,34,0.96);
+      background: #ff1f86;
       color: #fff;
-      font-size: 34px;
+      flex-shrink: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 6px;
+      text-align: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
     }
 
-    .capture-btn {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+    .mini-badge .l1 {
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+
+    .mini-badge .l2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 20px;
+      line-height: 1;
+      margin: 3px 0;
+    }
+
+    .mini-badge .l3 {
+      font-size: 6px;
+      line-height: 1.1;
+      letter-spacing: 0.7px;
+    }
+
+    .mode-switch {
+      flex: 1;
+      max-width: 320px;
+      background: #dddddd;
+      border-radius: 999px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
+    }
+
+    .mode {
+      flex: 1;
+      text-align: center;
+      padding: 18px 0;
+      border-radius: 999px;
+      font-size: 23px;
+      font-weight: 700;
+      color: #111;
+      text-transform: uppercase;
+    }
+
+    .mode.active {
+      background: #ececec;
+      color: #cf149d;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .rotate-btn {
+      width: 82px;
+      height: 82px;
       border: none;
-      background: rgba(54,54,54,0.96);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 50%;
+      background: #ececec;
+      color: #111;
+      font-size: 42px;
       cursor: pointer;
-    }
-
-    .capture-inner {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
-      background: #ff3a48;
+      flex-shrink: 0;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
     }
 
     .preview-btn {
-      width: 80px;
-      height: 80px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
-      border: 6px solid rgba(76,76,76,0.96);
-      background: #fff center/cover no-repeat;
-    }
-
-    .status {
-      min-height: 20px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.92);
-      text-align: center;
-      max-width: 330px;
+      border: 6px solid rgba(255,255,255,0.35);
+      background: #ffffff center/cover no-repeat;
+      display: none;
     }
 
     .hidden-input {
@@ -266,11 +324,11 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.72);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
+      z-index: 20;
       padding: 20px;
     }
 
@@ -281,7 +339,7 @@
       color: #111;
       border-radius: 18px;
       padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
     }
 
     .modal h3 {
@@ -299,7 +357,7 @@
       margin-top: 10px;
       width: 100%;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 12px;
       background: #111;
       color: #fff;
@@ -308,37 +366,58 @@
     }
 
     @media (max-width: 390px) {
-      .title {
-        font-size: 76px;
+      .date {
+        font-size: 20px;
+        letter-spacing: 8px;
       }
 
-      .subtitle {
-        font-size: 12px;
+      .title {
+        font-size: 96px;
+      }
+
+      .tequila {
+        font-size: 26px;
         letter-spacing: 6px;
       }
 
-      .brand {
-        font-size: 34px;
+      .subtitle {
+        font-size: 13px;
+        letter-spacing: 5px;
       }
 
-      .zoom {
-        gap: 22px;
+      .brand {
+        font-size: 46px;
       }
     }
   </style>
 </head>
 <body>
   <div class="app">
-    <div class="top">
-      <div class="dot"></div>
-      <div class="timer" id="timer">00:00:00</div>
+    <div class="top-wrap">
+      <div class="timer-pill" id="timer">
+        00:00:00
+        <span class="green-dot"></span>
+      </div>
+
+      <div class="tool-pill">
+        <span>🔇</span>
+        <span style="color:#cf149d;">◎</span>
+        <span>⠿</span>
+      </div>
     </div>
 
-    <div class="hero">
-      <div class="date">MARCH 13TH</div>
+    <div class="card">
+      <div class="date">MAY 8TH</div>
       <h1 class="title">CAM ON</h1>
+      <div class="tequila">TEQUILA SUNRISE</div>
       <div class="subtitle">INTERNATIONAL MUSIC VIBES</div>
       <div class="brand">APARTMENT</div>
+    </div>
+
+    <div class="camera-zone">
+      <button class="capture-btn" id="openCameraBtn" aria-label="Kamera öffnen"></button>
+
+      <div class="status" id="statusText">Bitte zuerst zustimmen.</div>
 
       <div class="consent-box">
         <input type="checkbox" id="consent" />
@@ -347,31 +426,25 @@
         </label>
       </div>
 
-      <div class="privacy-note">
-        Die Bilder sind nicht öffentlich für andere Gäste sichtbar. Zugriff hat nur der Betreiber.
-        <button type="button" id="openPrivacy">Datenschutzhinweis anzeigen</button>
-      </div>
-    </div>
+      <button class="privacy-link" id="openPrivacy" type="button">Datenschutzhinweis anzeigen</button>
 
-    <div class="bottom">
-      <div class="zoom">
-        <span>0,5</span>
-        <span class="zoom-active">1×</span>
-        <span>2</span>
-        <span>3</span>
-      </div>
+      <div class="bottom-row">
+        <div class="mini-badge">
+          <div class="l1">MAY 8TH</div>
+          <div class="l2">CAM ON</div>
+          <div class="l3">TEQUILA SUNRISE</div>
+          <div class="l3">APARTMENT</div>
+        </div>
 
-      <div class="controls">
-        <button class="side-btn" type="button" aria-label="Pause">❚❚</button>
+        <div class="mode-switch">
+          <div class="mode">VIDEO</div>
+          <div class="mode active">FOTO</div>
+        </div>
 
-        <button class="capture-btn" id="openCameraBtn" type="button" aria-label="Kamera öffnen">
-          <span class="capture-inner"></span>
-        </button>
-
-        <button class="preview-btn" id="previewBtn" type="button" aria-label="Vorschau"></button>
+        <button class="rotate-btn" id="rotateBtn" type="button" aria-label="Kamera wechseln">↻</button>
       </div>
 
-      <div class="status" id="statusText">Bitte zuerst zustimmen.</div>
+      <div class="preview-btn" id="previewBtn" aria-label="Vorschau"></div>
     </div>
 
     <input
@@ -403,12 +476,14 @@
     const cameraInput = document.getElementById("cameraInput");
     const statusText = document.getElementById("statusText");
     const timer = document.getElementById("timer");
+    const rotateBtn = document.getElementById("rotateBtn");
     const previewBtn = document.getElementById("previewBtn");
     const privacyModal = document.getElementById("privacyModal");
     const openPrivacy = document.getElementById("openPrivacy");
     const closePrivacy = document.getElementById("closePrivacy");
 
     let seconds = 0;
+    let currentCapture = "environment";
 
     function formatTime(totalSeconds) {
       const hh = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
@@ -417,11 +492,11 @@
       return `${hh}:${mm}:${ss}`;
     }
 
-    timer.textContent = formatTime(0);
+    timer.childNodes[0].nodeValue = formatTime(0);
 
     setInterval(() => {
       seconds++;
-      timer.textContent = formatTime(seconds);
+      timer.childNodes[0].nodeValue = formatTime(seconds);
     }, 1000);
 
     openPrivacy.addEventListener("click", () => {
@@ -436,6 +511,15 @@
       if (e.target === privacyModal) {
         privacyModal.style.display = "none";
       }
+    });
+
+    rotateBtn.addEventListener("click", () => {
+      currentCapture = currentCapture === "environment" ? "user" : "environment";
+      cameraInput.setAttribute("capture", currentCapture);
+      statusText.textContent =
+        currentCapture === "environment"
+          ? "Rückkamera ausgewählt."
+          : "Frontkamera ausgewählt.";
     });
 
     openCameraBtn.addEventListener("click", () => {
@@ -457,6 +541,7 @@
       }
 
       const objectUrl = URL.createObjectURL(file);
+      previewBtn.style.display = "block";
       previewBtn.style.backgroundImage = `url('${objectUrl}')`;
 
       statusText.textContent = "Foto wird hochgeladen...";
