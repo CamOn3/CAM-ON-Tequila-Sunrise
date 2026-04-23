@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAM ON</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  background: linear-gradient(180deg,#ffb07a,#ff2f87);
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 430px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* TOP BAR */
+.top {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.timer-box {
+  background: #ff2f87;
+  padding: 10px 30px;
+  border-radius: 30px;
+  position: relative;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: lime;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+
+.timer {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* CENTER CARD */
+.card {
+  background: #ff2f87;
+  margin: 0 20px;
+  border-radius: 30px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.date {
+  letter-spacing: 8px;
+  font-size: 18px;
+}
+
+.title {
+  font-family: 'Anton';
+  font-size: 110px;
+  line-height: 0.9;
+}
+
+.sub {
+  letter-spacing: 6px;
+  margin-top: 10px;
+}
+
+.brand {
+  margin-top: 25px;
+  font-family: 'Anton';
+  transform: skewX(-10deg);
+  font-size: 35px;
+}
+
+/* BOTTOM CAMERA UI */
+.bottom {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.capture {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.switch {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.switch-box {
+  background: #ddd;
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  gap: 20px;
+}
+
+.switch span {
+  padding: 8px 15px;
+}
+
+.active {
+  background: white;
+  border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="top">
+    <div class="timer-box">
+      <div class="dot"></div>
+      <div class="timer" id="timer">00:00:00</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="date">MAY 8TH</div>
+    <div class="title">CAM ON</div>
+    <div class="sub">TEQUILA SUNRISE</div>
+    <div class="sub">INTERNATIONAL MUSIC VIBES</div>
+    <div class="brand">APARTMENT</div>
+  </div>
+
+  <div class="bottom">
+    <div class="capture"></div>
+
+    <div class="switch">
+      <div class="switch-box">
+        <span>VIDEO</span>
+        <span class="active">FOTO</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let s = 0;
+setInterval(()=>{
+  s++;
+  let h = String(Math.floor(s/3600)).padStart(2,'0');
+  let m = String(Math.floor((s%3600)/60)).padStart(2,'0');
+  let sec = String(s%60).padStart(2,'0');
+  document.getElementById("timer").innerText = `${h}:${m}:${sec}`;
+},1000);
+</script>
+
+</body>
+</html>
