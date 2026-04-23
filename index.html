@@ -57,7 +57,7 @@ body {
   letter-spacing: 3px;
 }
 
-/* MAIN CARD */
+/* CARD */
 .card {
   background: #ff2f87;
   margin: 0 20px;
@@ -66,79 +66,38 @@ body {
   text-align: center;
 }
 
+/* 🔥 CAM ON EINZEILIG */
+.title {
+  font-family: 'Anton', sans-serif;
+  font-size: 95px;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+/* TEXT */
 .date {
   letter-spacing: 8px;
   font-size: 16px;
-  margin-bottom: 10px;
 }
 
-/* 🔥 CAM ON FONT FIX */
-.title {
-  font-family: 'Anton', sans-serif;
-  font-size: 120px;
-  line-height: 0.9;
-  letter-spacing: 2px;
-}
-
-/* SUB TEXT */
 .sub {
   letter-spacing: 6px;
   font-size: 14px;
   margin-top: 10px;
 }
 
-/* BRAND */
 .brand {
-  margin-top: 30px;
+  margin-top: 25px;
   font-family: 'Anton';
   font-size: 40px;
   transform: skewX(-10deg);
 }
 
-/* CAMERA BUTTON */
-.bottom {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.capture {
-  width: 85px;
-  height: 85px;
-  background: white;
-  border-radius: 50%;
-  margin: auto;
-}
-
-/* SWITCH */
-.switch {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.switch-box {
-  background: rgba(255,255,255,0.3);
-  border-radius: 30px;
-  padding: 5px;
-  display: flex;
-  gap: 20px;
-}
-
-.switch span {
-  padding: 8px 20px;
-}
-
-.active {
-  background: white;
-  color: black;
-  border-radius: 20px;
-}
-
-/* DSGVO POPUP */
+/* DSGVO */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,6 +111,15 @@ body {
   width: 80%;
   text-align: center;
 }
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 10px;
+}
 </style>
 </head>
 
@@ -160,7 +128,7 @@ body {
 <div class="overlay" id="overlay">
   <div class="popup">
     <p>Ich stimme zu, dass mein Foto verwendet werden darf.</p>
-    <button onclick="accept()">Zustimmen</button>
+    <button onclick="startCam()">Zustimmen</button>
   </div>
 </div>
 
@@ -181,29 +149,11 @@ body {
     <div class="brand">APARTMENT</div>
   </div>
 
-  <div class="bottom">
-    <div class="capture" onclick="openCam()"></div>
-
-    <div class="switch">
-      <div class="switch-box">
-        <span>VIDEO</span>
-        <span class="active">FOTO</span>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
 
 <script>
-let consent = false;
-
-function accept(){
-  consent = true;
-  document.getElementById("overlay").style.display="none";
-}
-
 /* TIMER */
 let s = 0;
 setInterval(()=>{
@@ -214,16 +164,14 @@ setInterval(()=>{
   document.getElementById("timer").innerText = `${h}:${m}:${sec}`;
 },1000);
 
-/* CAMERA */
-function openCam(){
-  if(!consent){
-    alert("Bitte erst zustimmen!");
-    return;
-  }
+/* 🔥 AUTO CAMERA NACH ZUSTIMMUNG */
+function startCam(){
+  document.getElementById("overlay").style.display="none";
 
   const widget = cloudinary.createUploadWidget({
-    cloudName: "deinCloudName",
-    uploadPreset: "deinPreset",
+    cloudName: "dh18ywkmb",
+uploadPreset: "camon_upload",
+  
     sources: ["camera"],
     multiple: false
   }, (error, result) => {
@@ -232,7 +180,7 @@ function openCam(){
     }
   });
 
-  widget.open();
+  widget.open(); // 👉 DIREKT KAMERA
 }
 </script>
 
