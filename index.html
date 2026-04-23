@@ -20,13 +20,13 @@
       padding: 0;
       width: 100%;
       min-height: 100%;
+      overflow-y: auto;
       font-family: 'Montserrat', sans-serif;
       color: #fff;
       background:
         radial-gradient(circle at 20% 10%, rgba(255,255,255,0.14), transparent 18%),
         radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 16%),
         linear-gradient(180deg, #f6b282 0%, #f79a93 45%, #ff79a8 100%);
-      overflow-y: auto;
     }
 
     body {
@@ -452,7 +452,7 @@
       class="hidden-input"
       type="file"
       accept="image/*"
-      capture="environment"
+      capture="user"
     />
   </div>
 
@@ -483,7 +483,7 @@
     const closePrivacy = document.getElementById("closePrivacy");
 
     let seconds = 0;
-    let currentCapture = "environment";
+    let currentCapture = "user";
 
     function formatTime(totalSeconds) {
       const hh = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
@@ -514,12 +514,12 @@
     });
 
     rotateBtn.addEventListener("click", () => {
-      currentCapture = currentCapture === "environment" ? "user" : "environment";
+      currentCapture = currentCapture === "user" ? "environment" : "user";
       cameraInput.setAttribute("capture", currentCapture);
       statusText.textContent =
-        currentCapture === "environment"
-          ? "Rückkamera ausgewählt."
-          : "Frontkamera ausgewählt.";
+        currentCapture === "user"
+          ? "Frontkamera ausgewählt."
+          : "Rückkamera ausgewählt.";
     });
 
     openCameraBtn.addEventListener("click", () => {
