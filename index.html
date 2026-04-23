@@ -18,7 +18,6 @@ body {
   color: white;
 }
 
-/* APP */
 .app {
   width: 100%;
   max-width: 430px;
@@ -66,18 +65,15 @@ body {
   text-align: center;
 }
 
-/* 🔥 CAM ON EINZEILIG */
-.title {
-  font-family: 'Anton', sans-serif;
-  font-size: 95px;
-  letter-spacing: 3px;
-  white-space: nowrap;
-}
-
-/* TEXT */
 .date {
   letter-spacing: 8px;
   font-size: 16px;
+}
+
+.title {
+  font-family: 'Anton', sans-serif;
+  font-size: 95px;
+  white-space: nowrap;
 }
 
 .sub {
@@ -93,7 +89,7 @@ body {
   transform: skewX(-10deg);
 }
 
-/* DSGVO */
+/* DSGVO POPUP */
 .overlay {
   position: fixed;
   inset: 0;
@@ -106,28 +102,33 @@ body {
 .popup {
   background: white;
   color: black;
-  padding: 20px;
+  padding: 25px;
   border-radius: 15px;
-  width: 80%;
+  width: 85%;
   text-align: center;
 }
 
 button {
   margin-top: 15px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
   background: black;
   color: white;
   border-radius: 10px;
+  font-size: 16px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- DSGVO -->
 <div class="overlay" id="overlay">
   <div class="popup">
-    <p>Ich stimme zu, dass mein Foto verwendet werden darf.</p>
+    <p>
+      Ich stimme zu, dass mein Foto aufgenommen und auf 
+      Social Media (insbesondere Instagram) veröffentlicht werden darf.
+    </p>
     <button onclick="startCam()">Zustimmen</button>
   </div>
 </div>
@@ -164,23 +165,22 @@ setInterval(()=>{
   document.getElementById("timer").innerText = `${h}:${m}:${sec}`;
 },1000);
 
-/* 🔥 AUTO CAMERA NACH ZUSTIMMUNG */
+/* KAMERA START */
 function startCam(){
   document.getElementById("overlay").style.display="none";
 
   const widget = cloudinary.createUploadWidget({
     cloudName: "dh18ywkmb",
-uploadPreset: "camon_upload",
-  
+    uploadPreset: "camon_upload1",
     sources: ["camera"],
     multiple: false
   }, (error, result) => {
     if(result.event === "success"){
-      alert("Foto erfolgreich!");
+      alert("Foto erfolgreich gespeichert!");
     }
   });
 
-  widget.open(); // 👉 DIREKT KAMERA
+  widget.open();
 }
 </script>
 
