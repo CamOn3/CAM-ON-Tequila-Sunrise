@@ -1,188 +1,485 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CAM ON</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>CAM ON</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  height: 100vh;
-  background: linear-gradient(180deg,#ffb07a,#ff2f87);
-  display: flex;
-  justify-content: center;
-  color: white;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-.app {
-  width: 100%;
-  max-width: 430px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #fff;
+      background: #000;
+    }
 
-/* TIMER */
-.top {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.timer-box {
-  background: #ff2f87;
-  padding: 10px 35px;
-  border-radius: 40px;
-  position: relative;
-}
+    .app {
+      position: relative;
+      width: 100%;
+      max-width: 430px;
+      height: 100dvh;
+      background: linear-gradient(180deg,#ffb07a,#ff2f87);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 18px 28px;
+      overflow: hidden;
+    }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  background: lime;
-  border-radius: 50%;
-  position: absolute;
-  right: 12px;
-  top: 8px;
-}
+    .top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 6px;
+    }
 
-.timer {
-  font-weight: 600;
-  letter-spacing: 3px;
-}
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #22f35d;
+      box-shadow: 0 0 14px rgba(34,243,93,0.9);
+    }
 
-/* CARD */
-.card {
-  background: #ff2f87;
-  margin: 0 20px;
-  border-radius: 30px;
-  padding: 40px 20px;
-  text-align: center;
-}
+    .timer {
+      background: #ff3a48;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-variant-numeric: tabular-nums;
+    }
 
-.date {
-  letter-spacing: 8px;
-  font-size: 16px;
-}
+    .hero {
+      text-align: center;
+      margin-top: 8px;
+    }
 
-.title {
-  font-family: 'Anton', sans-serif;
-  font-size: 95px;
-  white-space: nowrap;
-}
+    .date {
+      font-size: 18px;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.96);
+      margin-bottom: 12px;
+    }
 
-.sub {
-  letter-spacing: 6px;
-  font-size: 14px;
-  margin-top: 10px;
-}
+    .title {
+      margin: 0;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(84px, 20vw, 132px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f3f3f3;
+      white-space: nowrap;
+    }
 
-.brand {
-  margin-top: 25px;
-  font-family: 'Anton';
-  font-size: 40px;
-  transform: skewX(-10deg);
-}
+    .subtitle {
+      margin-top: 16px;
+      font-size: 14px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.95);
+      white-space: nowrap;
+    }
 
-/* DSGVO POPUP */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .brand {
+      margin-top: 54px;
+      font-family: 'Anton', sans-serif;
+      font-size: 38px;
+      transform: skewX(-14deg);
+      color: #fff;
+      text-transform: uppercase;
+    }
 
-.popup {
-  background: white;
-  color: black;
-  padding: 25px;
-  border-radius: 15px;
-  width: 85%;
-  text-align: center;
-}
+    .consent-box {
+      margin: 34px auto 0;
+      width: 100%;
+      max-width: 330px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+    }
 
-button {
-  margin-top: 15px;
-  padding: 12px 20px;
-  border: none;
-  background: black;
-  color: white;
-  border-radius: 10px;
-  font-size: 16px;
-}
-</style>
+    .consent-box input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border: 2px solid rgba(255,255,255,0.92);
+      border-radius: 6px;
+      background: transparent;
+      position: relative;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .consent-box input[type="checkbox"]:checked::after {
+      content: "✓";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .consent-box label {
+      font-size: 14px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .privacy-note {
+      margin: 16px auto 0;
+      max-width: 330px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.78);
+      text-align: left;
+    }
+
+    .privacy-note button {
+      background: none;
+      border: none;
+      color: #fff;
+      text-decoration: underline;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+      margin-bottom: 4px;
+    }
+
+    .zoom {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .zoom-active {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(36,36,36,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffd53d;
+      font-weight: 700;
+    }
+
+    .controls {
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .side-btn {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(34,34,34,0.96);
+      color: #fff;
+      font-size: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .capture-btn {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(54,54,54,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .capture-inner {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: #ff3a48;
+    }
+
+    .preview-btn {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 6px solid rgba(76,76,76,0.96);
+      background: #fff center/cover no-repeat;
+    }
+
+    .status {
+      min-height: 20px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.92);
+      text-align: center;
+      max-width: 330px;
+    }
+
+    .hidden-input {
+      display: none;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 360px;
+      background: #fff;
+      color: #111;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .modal h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .modal p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .modal button {
+      margin-top: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      background: #111;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 390px) {
+      .title {
+        font-size: 76px;
+      }
+
+      .subtitle {
+        font-size: 12px;
+        letter-spacing: 6px;
+      }
+
+      .brand {
+        font-size: 34px;
+      }
+
+      .zoom {
+        gap: 22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- DSGVO -->
-<div class="overlay" id="overlay">
-  <div class="popup">
-    <p>
-      Ich stimme zu, dass mein Foto aufgenommen und auf 
-      Social Media (insbesondere Instagram) veröffentlicht werden darf.
-    </p>
-    <button onclick="startCam()">Zustimmen</button>
-  </div>
-</div>
-
-<div class="app">
-
-  <div class="top">
-    <div class="timer-box">
+  <div class="app">
+    <div class="top">
       <div class="dot"></div>
       <div class="timer" id="timer">00:00:00</div>
     </div>
+
+    <div class="hero">
+      <div class="date">MARCH 13TH</div>
+      <h1 class="title">CAM ON</h1>
+      <div class="subtitle">INTERNATIONAL MUSIC VIBES</div>
+      <div class="brand">APARTMENT</div>
+
+      <div class="consent-box">
+        <input type="checkbox" id="consent" />
+        <label for="consent">
+          Ich stimme zu, dass mein Foto aufgenommen, gespeichert und auf Social Media, insbesondere Instagram, verwendet und veröffentlicht werden darf.
+        </label>
+      </div>
+
+      <div class="privacy-note">
+        Die Bilder sind nicht öffentlich für andere Gäste sichtbar. Zugriff hat nur der Betreiber.
+        <button type="button" id="openPrivacy">Datenschutzhinweis anzeigen</button>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="zoom">
+        <span>0,5</span>
+        <span class="zoom-active">1×</span>
+        <span>2</span>
+        <span>3</span>
+      </div>
+
+      <div class="controls">
+        <button class="side-btn" type="button" aria-label="Pause">❚❚</button>
+
+        <button class="capture-btn" id="openCameraBtn" type="button" aria-label="Kamera öffnen">
+          <span class="capture-inner"></span>
+        </button>
+
+        <button class="preview-btn" id="previewBtn" type="button" aria-label="Vorschau"></button>
+      </div>
+
+      <div class="status" id="statusText">Bitte zuerst zustimmen.</div>
+    </div>
+
+    <input
+      id="cameraInput"
+      class="hidden-input"
+      type="file"
+      accept="image/*"
+      capture="environment"
+    />
   </div>
 
-  <div class="card">
-    <div class="date">MAY 8TH</div>
-    <div class="title">CAM ON</div>
-    <div class="sub">TEQUILA SUNRISE</div>
-    <div class="sub">INTERNATIONAL MUSIC VIBES</div>
-    <div class="brand">APARTMENT</div>
+  <div class="modal-backdrop" id="privacyModal">
+    <div class="modal">
+      <h3>Datenschutzhinweis</h3>
+      <p>Beim Aufnehmen und Hochladen eines Fotos werden Bilddaten verarbeitet.</p>
+      <p>Die Fotos werden für dieses Event gespeichert und können auf Social Media, insbesondere Instagram, veröffentlicht werden.</p>
+      <p>Andere Gäste können hochgeladene Bilder nicht direkt sehen. Zugriff hat nur der Betreiber.</p>
+      <p>Wenn du nicht einverstanden bist, nutze die Foto-Funktion bitte nicht.</p>
+      <button type="button" id="closePrivacy">Schließen</button>
+    </div>
   </div>
 
-</div>
+  <script>
+    const CLOUD_NAME = "dhl8ywkmb";
+    const UPLOAD_PRESET = "camon_upload1";
 
-<script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+    const consent = document.getElementById("consent");
+    const openCameraBtn = document.getElementById("openCameraBtn");
+    const cameraInput = document.getElementById("cameraInput");
+    const statusText = document.getElementById("statusText");
+    const timer = document.getElementById("timer");
+    const previewBtn = document.getElementById("previewBtn");
+    const privacyModal = document.getElementById("privacyModal");
+    const openPrivacy = document.getElementById("openPrivacy");
+    const closePrivacy = document.getElementById("closePrivacy");
 
-<script>
-/* TIMER */
-let s = 0;
-setInterval(()=>{
-  s++;
-  let h = String(Math.floor(s/3600)).padStart(2,'0');
-  let m = String(Math.floor((s%3600)/60)).padStart(2,'0');
-  let sec = String(s%60).padStart(2,'0');
-  document.getElementById("timer").innerText = `${h}:${m}:${sec}`;
-},1000);
+    let seconds = 0;
 
-/* KAMERA START */
-function startCam(){
-  document.getElementById("overlay").style.display="none";
-
-  const widget = cloudinary.createUploadWidget({
-    cloudName: "dh18ywkmb",
-    uploadPreset: "camon_upload1",
-    sources: ["camera"],
-    multiple: false
-  }, (error, result) => {
-    if(result.event === "success"){
-      alert("Foto erfolgreich gespeichert!");
+    function formatTime(totalSeconds) {
+      const hh = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+      const mm = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+      const ss = String(totalSeconds % 60).padStart(2, "0");
+      return `${hh}:${mm}:${ss}`;
     }
-  });
 
-  widget.open();
-}
-</script>
+    timer.textContent = formatTime(0);
 
+    setInterval(() => {
+      seconds++;
+      timer.textContent = formatTime(seconds);
+    }, 1000);
+
+    openPrivacy.addEventListener("click", () => {
+      privacyModal.style.display = "flex";
+    });
+
+    closePrivacy.addEventListener("click", () => {
+      privacyModal.style.display = "none";
+    });
+
+    privacyModal.addEventListener("click", (e) => {
+      if (e.target === privacyModal) {
+        privacyModal.style.display = "none";
+      }
+    });
+
+    openCameraBtn.addEventListener("click", () => {
+      if (!consent.checked) {
+        statusText.textContent = "Bitte zuerst zustimmen.";
+        return;
+      }
+
+      statusText.textContent = "Kamera wird geöffnet...";
+      cameraInput.click();
+    });
+
+    cameraInput.addEventListener("change", async (event) => {
+      const file = event.target.files[0];
+
+      if (!file) {
+        statusText.textContent = "Kein Bild ausgewählt.";
+        return;
+      }
+
+      const objectUrl = URL.createObjectURL(file);
+      previewBtn.style.backgroundImage = `url('${objectUrl}')`;
+
+      statusText.textContent = "Foto wird hochgeladen...";
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", UPLOAD_PRESET);
+      formData.append("folder", "camon_party");
+
+      try {
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) throw new Error("Upload failed");
+
+        statusText.textContent = "Foto erfolgreich hochgeladen.";
+        cameraInput.value = "";
+      } catch (error) {
+        statusText.textContent = "Upload fehlgeschlagen.";
+      }
+    });
+  </script>
 </body>
 </html>
