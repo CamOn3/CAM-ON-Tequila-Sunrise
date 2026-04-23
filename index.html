@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>CAM ON – Tequila Sunrise</title>
+  <title>CAM ON</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,10 +20,9 @@
       padding: 0;
       width: 100%;
       min-height: 100%;
-      background: linear-gradient(180deg, #f7b184 0%, #f78a90 40%, #ff6a99 100%);
-      font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
-      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, #f5b185 0%, #f89a90 40%, #ff6d9c 100%);
     }
 
     body {
@@ -38,194 +37,153 @@
       min-height: 100dvh;
       overflow: hidden;
       background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.15), transparent 20%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.10), transparent 18%),
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08), transparent 18%),
-        linear-gradient(180deg, #f7b184 0%, #f78a90 35%, #ff6a99 100%);
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,0.18), transparent 18%),
+        radial-gradient(circle at 82% 16%, rgba(255,255,255,0.12), transparent 18%),
+        radial-gradient(circle at 18% 84%, rgba(255,255,255,0.08), transparent 16%),
+        linear-gradient(180deg, #f5b185 0%, #f89a90 40%, #ff6d9c 100%);
     }
 
-    .noise {
+    .texture {
       position: absolute;
       inset: 0;
-      opacity: 0.07;
+      opacity: 0.06;
       pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);
       background-size: 8px 8px;
       mix-blend-mode: soft-light;
     }
 
     .top {
       position: relative;
-      padding-top: 24px;
+      z-index: 3;
+      padding-top: 22px;
       display: flex;
       justify-content: center;
-      z-index: 2;
     }
 
     .timer-pill {
       position: relative;
-      min-width: 170px;
+      min-width: 168px;
       text-align: center;
-      background: #ff1f86;
+      background: #ff1d86;
       color: white;
-      padding: 15px 24px;
+      padding: 16px 26px;
       border-radius: 999px;
       font-size: 22px;
       font-weight: 700;
       letter-spacing: 2px;
       font-variant-numeric: tabular-nums;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
     }
 
     .green-dot {
       position: absolute;
-      right: 20px;
-      top: 16px;
+      right: 18px;
+      top: 14px;
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: #b8ff18;
-      box-shadow: 0 0 10px rgba(184,255,24,0.8);
+      background: #b9ff18;
+      box-shadow: 0 0 10px rgba(185,255,24,0.8);
     }
 
-    .top-tools {
+    .tool-pill {
       position: absolute;
-      right: 18px;
-      top: 150px;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      top: 155px;
+      right: 16px;
+      z-index: 3;
       background: #ececec;
-      border-radius: 999px;
-      padding: 14px 22px;
       color: #111;
+      border-radius: 999px;
+      padding: 14px 18px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
       font-size: 30px;
-      line-height: 1;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
     }
 
-    .card {
+    .pink-card {
       position: relative;
-      z-index: 1;
-      margin: 180px 0 0;
-      background: #ff1f86;
-      padding: 90px 28px 110px;
+      z-index: 2;
+      margin-top: 185px;
+      background: #ff1d86;
+      padding: 92px 26px 110px;
       text-align: center;
     }
 
     .date {
-      color: white;
+      color: #fff;
       font-size: 22px;
       letter-spacing: 10px;
       font-weight: 300;
-      margin-bottom: 24px;
       text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
     .title {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(110px, 26vw, 170px);
-      line-height: 0.9;
       margin: 0;
-      color: #f3f3f3;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(112px, 27vw, 175px);
+      line-height: 0.9;
+      color: #f5f5f5;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .tequila {
       margin-top: 28px;
-      font-size: 34px;
+      font-size: 33px;
       letter-spacing: 8px;
       font-weight: 300;
-      color: white;
       text-transform: uppercase;
+      color: #fff;
     }
 
     .subtitle {
-      margin-top: 50px;
+      margin-top: 48px;
       font-size: 17px;
-      font-weight: 300;
-      font-style: italic;
       letter-spacing: 8px;
-      color: rgba(255,255,255,0.9);
+      font-style: italic;
+      font-weight: 300;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
       white-space: nowrap;
     }
 
     .brand {
-      margin-top: 62px;
+      margin-top: 60px;
       font-family: 'Anton', sans-serif;
-      font-size: 56px;
+      font-size: 58px;
+      line-height: 1;
+      color: #fff;
       transform: skewX(-14deg);
-      color: white;
       text-transform: uppercase;
-    }
-
-    .flower, .drink, .fruit, .star {
-      position: absolute;
-      z-index: 3;
-      user-select: none;
-      pointer-events: none;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
-    }
-
-    .flower {
-      font-size: 110px;
-    }
-
-    .flower.f1 { top: 70px; left: -8px; transform: rotate(-10deg); }
-    .flower.f2 { top: 160px; left: -18px; font-size: 130px; transform: rotate(8deg); }
-    .flower.f3 { top: 190px; right: -8px; font-size: 82px; transform: rotate(18deg); }
-    .flower.f4 { bottom: 250px; right: 18px; font-size: 90px; transform: rotate(-8deg); }
-    .flower.f5 { bottom: 215px; right: -10px; font-size: 110px; transform: rotate(10deg); }
-    .flower.f6 { bottom: 285px; left: 6px; font-size: 95px; transform: rotate(-10deg); }
-
-    .drink {
-      right: 26px;
-      bottom: 250px;
-      font-size: 140px;
-      transform: rotate(-2deg);
-    }
-
-    .fruit {
-      left: -12px;
-      bottom: 255px;
-      font-size: 88px;
-      transform: rotate(-12deg);
-    }
-
-    .star {
-      left: 54px;
-      bottom: 280px;
-      font-size: 70px;
-      transform: rotate(10deg);
     }
 
     .camera-area {
       position: relative;
-      z-index: 2;
-      margin-top: -30px;
-      padding: 0 24px 34px;
+      z-index: 3;
+      margin-top: -32px;
+      padding: 0 24px 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .capture-button {
-      width: 120px;
-      height: 120px;
+      width: 122px;
+      height: 122px;
       border-radius: 50%;
+      border: 10px solid rgba(255,255,255,0.3);
       background: #f2f2f2;
-      border: 10px solid rgba(255,255,255,0.25);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
       cursor: pointer;
     }
 
     .controls-row {
       width: 100%;
-      margin-top: 36px;
+      margin-top: 34px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -236,36 +194,21 @@
       width: 82px;
       height: 82px;
       border-radius: 50%;
-      background: #ff1f86;
+      background: #ff1d86;
       color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-shrink: 0;
       text-align: center;
       padding: 6px;
+      flex-shrink: 0;
       box-shadow: 0 6px 14px rgba(0,0,0,0.12);
     }
 
-    .mini-logo .small1 {
-      font-size: 9px;
-      letter-spacing: 1px;
-      line-height: 1.1;
-    }
-
-    .mini-logo .small2 {
-      font-family: 'Anton', sans-serif;
-      font-size: 20px;
-      line-height: 1;
-      margin: 2px 0;
-    }
-
-    .mini-logo .small3 {
-      font-size: 6px;
-      letter-spacing: 0.7px;
-      line-height: 1.1;
-    }
+    .mini-logo .a { font-size: 9px; line-height: 1.1; letter-spacing: 1px; }
+    .mini-logo .b { font-family: 'Anton', sans-serif; font-size: 20px; line-height: 1; margin: 2px 0; }
+    .mini-logo .c { font-size: 6px; line-height: 1.1; letter-spacing: 0.7px; }
 
     .mode-switch {
       flex: 1;
@@ -275,11 +218,10 @@
       padding: 6px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
     }
 
-    .mode-item {
+    .mode {
       flex: 1;
       text-align: center;
       padding: 18px 0;
@@ -290,7 +232,7 @@
       text-transform: uppercase;
     }
 
-    .mode-item.active {
+    .mode.active {
       background: #ececec;
       color: #d1149d;
       box-shadow: 0 3px 8px rgba(0,0,0,0.08);
@@ -300,24 +242,69 @@
       width: 82px;
       height: 82px;
       border-radius: 50%;
+      border: none;
       background: #ececec;
       color: #111;
-      border: none;
-      font-size: 42px;
+      font-size: 40px;
       cursor: pointer;
       flex-shrink: 0;
       box-shadow: 0 6px 14px rgba(0,0,0,0.12);
     }
 
+    .status {
+      margin-top: 14px;
+      min-height: 22px;
+      text-align: center;
+      font-size: 15px;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    }
+
+    .asset {
+      position: absolute;
+      z-index: 4;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+    }
+
+    .asset.flower { font-size: 108px; }
+    .asset.flower.f1 { top: 74px; left: -2px; transform: rotate(-8deg); }
+    .asset.flower.f2 { top: 165px; left: -12px; font-size: 128px; transform: rotate(10deg); }
+    .asset.flower.f3 { top: 196px; right: -8px; font-size: 84px; transform: rotate(14deg); }
+    .asset.flower.f4 { bottom: 252px; right: 26px; font-size: 88px; transform: rotate(-8deg); }
+    .asset.flower.f5 { bottom: 225px; right: -8px; font-size: 108px; transform: rotate(8deg); }
+    .asset.flower.f6 { bottom: 290px; left: 10px; font-size: 92px; transform: rotate(-14deg); }
+
+    .asset.drink {
+      right: 28px;
+      bottom: 246px;
+      font-size: 142px;
+    }
+
+    .asset.citrus {
+      left: -8px;
+      bottom: 255px;
+      font-size: 92px;
+      transform: rotate(-12deg);
+    }
+
+    .asset.star {
+      left: 64px;
+      bottom: 290px;
+      font-size: 72px;
+      transform: rotate(10deg);
+    }
+
     .consent-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.68);
       display: flex;
-      align-items: center;
       justify-content: center;
-      z-index: 20;
+      align-items: center;
       padding: 24px;
+      z-index: 20;
     }
 
     .consent-box {
@@ -326,8 +313,8 @@
       background: white;
       color: #111;
       border-radius: 28px;
-      padding: 26px 22px 22px;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+      padding: 24px 22px 22px;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.28);
     }
 
     .consent-box h3 {
@@ -337,15 +324,15 @@
 
     .consent-box p {
       margin: 0 0 18px;
-      line-height: 1.45;
       font-size: 15px;
+      line-height: 1.45;
     }
 
     .consent-check {
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-size: 15px;
       line-height: 1.4;
     }
@@ -366,7 +353,7 @@
     }
 
     .btn-primary {
-      background: #ff1f86;
+      background: #ff1d86;
       color: white;
     }
 
@@ -375,83 +362,47 @@
       color: #111;
     }
 
-    .status {
-      margin-top: 14px;
-      text-align: center;
-      color: white;
-      font-size: 15px;
-      min-height: 22px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    }
-
     .hidden-input {
       display: none;
     }
 
     @media (max-width: 390px) {
-      .card {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .date {
-        font-size: 18px;
-        letter-spacing: 7px;
-      }
-
-      .tequila {
-        font-size: 28px;
-        letter-spacing: 6px;
-      }
-
-      .subtitle {
-        font-size: 14px;
-        letter-spacing: 5px;
-      }
-
-      .brand {
-        font-size: 46px;
-      }
-
-      .top-tools {
-        transform: scale(0.88);
-        transform-origin: top right;
-      }
-
-      .flower.f1 { font-size: 92px; }
-      .flower.f2 { font-size: 112px; }
-      .flower.f4 { font-size: 78px; }
-      .flower.f5 { font-size: 96px; }
+      .tool-pill { transform: scale(0.88); transform-origin: top right; }
+      .date { font-size: 18px; letter-spacing: 7px; }
+      .tequila { font-size: 28px; letter-spacing: 6px; }
+      .subtitle { font-size: 14px; letter-spacing: 5px; }
+      .brand { font-size: 48px; }
     }
   </style>
 </head>
 <body>
   <div class="app">
-    <div class="noise"></div>
+    <div class="texture"></div>
 
-    <div class="flower f1">🌺</div>
-    <div class="flower f2">🌺</div>
-    <div class="flower f3">🌺</div>
-    <div class="flower f4">🌺</div>
-    <div class="flower f5">🌺</div>
-    <div class="flower f6">🌺</div>
-    <div class="drink">🍹</div>
-    <div class="fruit">🍊</div>
-    <div class="star">⭐</div>
+    <div class="asset flower f1">🌺</div>
+    <div class="asset flower f2">🌺</div>
+    <div class="asset flower f3">🌺</div>
+    <div class="asset flower f4">🌺</div>
+    <div class="asset flower f5">🌺</div>
+    <div class="asset flower f6">🌺</div>
+    <div class="asset drink">🍹</div>
+    <div class="asset citrus">🍊</div>
+    <div class="asset star">⭐</div>
 
     <div class="top">
-      <div class="timer-pill" id="timer">00:00:00
+      <div class="timer-pill" id="timer">
+        00:00:00
         <span class="green-dot"></span>
       </div>
     </div>
 
-    <div class="top-tools">
+    <div class="tool-pill">
       <span>🔇</span>
-      <span style="color:#d1149d;">◎</span>
+      <span style="color:#cf0eb1;">◎</span>
       <span>⠿</span>
     </div>
 
-    <div class="card">
+    <div class="pink-card">
       <div class="date">MAY 8TH</div>
       <h1 class="title">CAM ON</h1>
       <div class="tequila">TEQUILA SUNRISE</div>
@@ -461,20 +412,19 @@
 
     <div class="camera-area">
       <button class="capture-button" id="openCameraBtn" aria-label="Kamera öffnen"></button>
-
       <div class="status" id="statusText"></div>
 
       <div class="controls-row">
         <div class="mini-logo">
-          <div class="small1">MAY 8TH</div>
-          <div class="small2">CAM ON</div>
-          <div class="small3">TEQUILA SUNRISE</div>
-          <div class="small3">APARTMENT</div>
+          <div class="a">MAY 8TH</div>
+          <div class="b">CAM ON</div>
+          <div class="c">TEQUILA SUNRISE</div>
+          <div class="c">APARTMENT</div>
         </div>
 
         <div class="mode-switch">
-          <div class="mode-item">VIDEO</div>
-          <div class="mode-item active">FOTO</div>
+          <div class="mode">VIDEO</div>
+          <div class="mode active">FOTO</div>
         </div>
 
         <button class="rotate-btn" id="rotateBtn" aria-label="Kamera wechseln">↻</button>
@@ -519,7 +469,6 @@
     const openCameraBtn = document.getElementById("openCameraBtn");
     const cameraInput = document.getElementById("cameraInput");
     const rotateBtn = document.getElementById("rotateBtn");
-
     const consentOverlay = document.getElementById("consentOverlay");
     const consentCheck = document.getElementById("consentCheck");
     const acceptBtn = document.getElementById("acceptBtn");
@@ -539,11 +488,9 @@
     function startTimer() {
       if (timerStarted) return;
       timerStarted = true;
-      timerEl.textContent = formatTime(0);
-
       setInterval(() => {
         seconds++;
-        timerEl.firstChild.textContent = formatTime(seconds);
+        timerEl.childNodes[0].nodeValue = formatTime(seconds);
       }, 1000);
     }
 
@@ -552,7 +499,6 @@
         alert("Bitte erst zustimmen.");
         return;
       }
-
       consentOverlay.style.display = "none";
       startTimer();
       statusText.textContent = "Bereit für dein Foto.";
@@ -575,7 +521,6 @@
         statusText.textContent = "Bitte zuerst zustimmen.";
         return;
       }
-
       cameraInput.click();
     });
 
