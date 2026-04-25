@@ -19,49 +19,51 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      min-height: 100%;
-      overflow-y: auto;
+      height: 100%;
+      overflow: hidden;
       font-family: 'Montserrat', sans-serif;
       color: #fff;
+      background: linear-gradient(180deg, #f6b282 0%, #f79a93 45%, #ff79a8 100%);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      position: relative;
+      width: 100%;
+      max-width: 430px;
+      height: 100dvh;
+      overflow: hidden;
+      padding: 18px 18px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       background:
         radial-gradient(circle at 20% 10%, rgba(255,255,255,0.14), transparent 18%),
         radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 16%),
         linear-gradient(180deg, #f6b282 0%, #f79a93 45%, #ff79a8 100%);
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-    }
-
-    .app {
-      width: 100%;
-      max-width: 430px;
-      min-height: 100vh;
-      padding: 22px 18px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .top-wrap {
+    .top {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 22px;
+      gap: 26px;
+      flex-shrink: 0;
     }
 
     .timer-pill {
       position: relative;
-      min-width: 170px;
+      min-width: 165px;
       text-align: center;
       background: #ff1f86;
-      color: #fff;
-      padding: 16px 24px;
+      padding: 14px 24px;
       border-radius: 999px;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
       letter-spacing: 2px;
       font-variant-numeric: tabular-nums;
@@ -70,93 +72,105 @@
 
     .green-dot {
       position: absolute;
-      top: 16px;
+      top: 13px;
       right: 18px;
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
       background: #c7ff1a;
       box-shadow: 0 0 10px rgba(199,255,26,0.8);
     }
 
-    .tool-pill {
+    .top-tool {
       align-self: flex-end;
       background: #ececec;
       color: #111;
       border-radius: 999px;
-      padding: 14px 20px;
+      padding: 12px 18px;
       display: flex;
       align-items: center;
       gap: 18px;
-      font-size: 30px;
+      font-size: 25px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .tool-icon {
+      color: #111;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .tool-icon.pink {
+      color: #cf149d;
+      font-size: 28px;
     }
 
     .card {
       background: #ff1f86;
-      padding: 78px 22px 86px;
+      padding: 54px 18px 58px;
       text-align: center;
+      flex-shrink: 0;
     }
 
     .date {
-      font-size: 24px;
+      font-size: 21px;
       font-weight: 300;
-      letter-spacing: 10px;
+      letter-spacing: 9px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .title {
       margin: 0;
       font-family: 'Anton', sans-serif;
-      font-size: clamp(100px, 23vw, 150px);
-      line-height: 0.9;
+      font-size: 96px;
+      line-height: 0.88;
       letter-spacing: 1px;
-      text-transform: uppercase;
       color: #f2f2f2;
+      text-transform: uppercase;
       white-space: nowrap;
     }
 
     .tequila {
-      margin-top: 26px;
-      font-size: 30px;
+      margin-top: 24px;
+      font-size: 25px;
       font-weight: 300;
-      letter-spacing: 8px;
+      letter-spacing: 7px;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .subtitle {
-      margin-top: 48px;
-      font-size: 16px;
+      margin-top: 36px;
+      font-size: 13px;
       font-weight: 300;
       font-style: italic;
-      letter-spacing: 8px;
+      letter-spacing: 5px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.92);
       white-space: nowrap;
     }
 
     .brand {
-      margin-top: 58px;
+      margin-top: 42px;
       font-family: 'Anton', sans-serif;
-      font-size: 56px;
+      font-size: 46px;
       line-height: 1;
       transform: skewX(-12deg);
       text-transform: uppercase;
     }
 
-    .camera-zone {
+    .bottom {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 22px;
-      margin-top: -10px;
+      gap: 14px;
+      flex-shrink: 0;
     }
 
     .capture-btn {
-      width: 122px;
-      height: 122px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
       border: 10px solid rgba(255,255,255,0.28);
       background: #f2f2f2;
@@ -165,27 +179,27 @@
     }
 
     .status {
-      min-height: 20px;
+      min-height: 18px;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       color: rgba(255,255,255,0.96);
     }
 
     .consent-box {
       width: 100%;
-      max-width: 340px;
+      max-width: 350px;
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       text-align: left;
     }
 
     .consent-box input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 24px;
-      height: 24px;
-      min-width: 24px;
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
       border: 2px solid rgba(255,255,255,0.95);
       border-radius: 6px;
       background: transparent;
@@ -201,14 +215,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: #fff;
     }
 
     .consent-box label {
-      font-size: 13px;
-      line-height: 1.5;
+      font-size: 12px;
+      line-height: 1.35;
       color: rgba(255,255,255,0.96);
     }
 
@@ -229,12 +243,12 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .mini-badge {
-      width: 82px;
-      height: 82px;
+      width: 74px;
+      height: 74px;
       border-radius: 50%;
       background: #ff1f86;
       color: #fff;
@@ -249,72 +263,35 @@
     }
 
     .mini-badge .l1 {
-      font-size: 9px;
+      font-size: 8px;
       line-height: 1;
       letter-spacing: 1px;
     }
 
     .mini-badge .l2 {
       font-family: 'Anton', sans-serif;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
       margin: 3px 0;
     }
 
     .mini-badge .l3 {
-      font-size: 6px;
+      font-size: 5px;
       line-height: 1.1;
-      letter-spacing: 0.7px;
-    }
-
-    .mode-switch {
-      flex: 1;
-      max-width: 320px;
-      background: #dddddd;
-      border-radius: 999px;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.12);
-    }
-
-    .mode {
-      flex: 1;
-      text-align: center;
-      padding: 18px 0;
-      border-radius: 999px;
-      font-size: 23px;
-      font-weight: 700;
-      color: #111;
-      text-transform: uppercase;
-    }
-
-    .mode.active {
-      background: #ececec;
-      color: #cf149d;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      letter-spacing: 0.6px;
     }
 
     .rotate-btn {
-      width: 82px;
-      height: 82px;
+      width: 74px;
+      height: 74px;
       border: none;
       border-radius: 50%;
       background: #ececec;
       color: #111;
-      font-size: 42px;
+      font-size: 38px;
       cursor: pointer;
       flex-shrink: 0;
       box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-    }
-
-    .preview-btn {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      border: 6px solid rgba(255,255,255,0.35);
-      background: #ffffff center/cover no-repeat;
-      display: none;
     }
 
     .hidden-input {
@@ -365,44 +342,68 @@
       cursor: pointer;
     }
 
-    @media (max-width: 390px) {
-      .date {
-        font-size: 20px;
-        letter-spacing: 8px;
+    @media (max-height: 740px) {
+      .card {
+        padding: 42px 16px 44px;
       }
 
       .title {
-        font-size: 96px;
-      }
-
-      .tequila {
-        font-size: 26px;
-        letter-spacing: 6px;
-      }
-
-      .subtitle {
-        font-size: 13px;
-        letter-spacing: 5px;
+        font-size: 82px;
       }
 
       .brand {
-        font-size: 46px;
+        margin-top: 34px;
+        font-size: 40px;
+      }
+
+      .subtitle {
+        margin-top: 28px;
+      }
+
+      .capture-btn {
+        width: 96px;
+        height: 96px;
+      }
+
+      .consent-box label {
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .title {
+        font-size: 82px;
+      }
+
+      .tequila {
+        font-size: 22px;
+        letter-spacing: 5px;
+      }
+
+      .subtitle {
+        font-size: 11px;
+        letter-spacing: 4px;
+      }
+
+      .brand {
+        font-size: 40px;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="app">
-    <div class="top-wrap">
+    <div class="top">
       <div class="timer-pill" id="timer">
         00:00:00
         <span class="green-dot"></span>
       </div>
 
-      <div class="tool-pill">
-        <span>🔇</span>
-        <span style="color:#cf149d;">◎</span>
-        <span>⠿</span>
+      <div class="top-tool">
+        <span class="tool-icon">✕</span>
+        <span class="tool-icon pink">◎</span>
+        <span class="tool-icon">⠿</span>
       </div>
     </div>
 
@@ -414,7 +415,7 @@
       <div class="brand">APARTMENT</div>
     </div>
 
-    <div class="camera-zone">
+    <div class="bottom">
       <button class="capture-btn" id="openCameraBtn" aria-label="Kamera öffnen"></button>
 
       <div class="status" id="statusText">Bitte zuerst zustimmen.</div>
@@ -436,15 +437,10 @@
           <div class="l3">APARTMENT</div>
         </div>
 
-        <div class="mode-switch">
-          <div class="mode">VIDEO</div>
-          <div class="mode active">FOTO</div>
-        </div>
+        <div></div>
 
         <button class="rotate-btn" id="rotateBtn" type="button" aria-label="Kamera wechseln">↻</button>
       </div>
-
-      <div class="preview-btn" id="previewBtn" aria-label="Vorschau"></div>
     </div>
 
     <input
@@ -477,7 +473,6 @@
     const statusText = document.getElementById("statusText");
     const timer = document.getElementById("timer");
     const rotateBtn = document.getElementById("rotateBtn");
-    const previewBtn = document.getElementById("previewBtn");
     const privacyModal = document.getElementById("privacyModal");
     const openPrivacy = document.getElementById("openPrivacy");
     const closePrivacy = document.getElementById("closePrivacy");
@@ -539,10 +534,6 @@
         statusText.textContent = "Kein Bild ausgewählt.";
         return;
       }
-
-      const objectUrl = URL.createObjectURL(file);
-      previewBtn.style.display = "block";
-      previewBtn.style.backgroundImage = `url('${objectUrl}')`;
 
       statusText.textContent = "Foto wird hochgeladen...";
 
