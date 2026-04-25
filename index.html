@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>CAM ON</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -19,45 +17,32 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      min-height: 100%;
       font-family: 'Montserrat', sans-serif;
-      color: #fff;
+      color: white;
       background: linear-gradient(180deg, #f6b282 0%, #f79a93 45%, #ff79a8 100%);
+      overflow-y: auto;
     }
 
     body {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
     .app {
-      position: relative;
       width: 100%;
       max-width: 430px;
-      height: 100dvh;
-      overflow: hidden;
-      padding: 18px 18px 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.14), transparent 18%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 16%),
-        linear-gradient(180deg, #f6b282 0%, #f79a93 45%, #ff79a8 100%);
-    }
-
-    .top {
+      min-height: 100dvh;
+      padding: 18px 18px 34px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 26px;
-      flex-shrink: 0;
+      background: linear-gradient(180deg, #f6b282 0%, #f79a93 45%, #ff79a8 100%);
     }
 
     .timer-pill {
       position: relative;
+      margin-top: 10px;
       min-width: 165px;
       text-align: center;
       background: #ff1f86;
@@ -83,6 +68,8 @@
 
     .top-tool {
       align-self: flex-end;
+      margin-top: 28px;
+      margin-bottom: 18px;
       background: #ececec;
       color: #111;
       border-radius: 999px;
@@ -106,10 +93,10 @@
     }
 
     .card {
+      width: 100%;
       background: #ff1f86;
       padding: 54px 18px 58px;
       text-align: center;
-      flex-shrink: 0;
     }
 
     .date {
@@ -161,11 +148,12 @@
     }
 
     .bottom {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
+      gap: 16px;
+      padding-top: 18px;
     }
 
     .capture-btn {
@@ -190,16 +178,17 @@
       max-width: 350px;
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
       text-align: left;
+      margin-top: 2px;
     }
 
     .consent-box input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 22px;
-      height: 22px;
-      min-width: 22px;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
       border: 2px solid rgba(255,255,255,0.95);
       border-radius: 6px;
       background: transparent;
@@ -215,14 +204,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: #fff;
     }
 
     .consent-box label {
-      font-size: 12px;
-      line-height: 1.35;
+      font-size: 13px;
+      line-height: 1.45;
       color: rgba(255,255,255,0.96);
     }
 
@@ -243,7 +232,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      margin-top: 6px;
+      margin-top: 10px;
     }
 
     .mini-badge {
@@ -342,34 +331,6 @@
       cursor: pointer;
     }
 
-    @media (max-height: 740px) {
-      .card {
-        padding: 42px 16px 44px;
-      }
-
-      .title {
-        font-size: 82px;
-      }
-
-      .brand {
-        margin-top: 34px;
-        font-size: 40px;
-      }
-
-      .subtitle {
-        margin-top: 28px;
-      }
-
-      .capture-btn {
-        width: 96px;
-        height: 96px;
-      }
-
-      .consent-box label {
-        font-size: 11px;
-      }
-    }
-
     @media (max-width: 390px) {
       .title {
         font-size: 82px;
@@ -394,17 +355,15 @@
 
 <body>
   <div class="app">
-    <div class="top">
-      <div class="timer-pill" id="timer">
-        00:00:00
-        <span class="green-dot"></span>
-      </div>
+    <div class="timer-pill" id="timer">
+      00:00:00
+      <span class="green-dot"></span>
+    </div>
 
-      <div class="top-tool">
-        <span class="tool-icon">✕</span>
-        <span class="tool-icon pink">◎</span>
-        <span class="tool-icon">⠿</span>
-      </div>
+    <div class="top-tool">
+      <span class="tool-icon">✕</span>
+      <span class="tool-icon pink">◎</span>
+      <span class="tool-icon">⠿</span>
     </div>
 
     <div class="card">
